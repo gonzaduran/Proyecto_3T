@@ -1,5 +1,4 @@
 #Club privado
-¿Qué tipo de club es? (gimnasio, club de fútbol, multideportivo, etc.)
 
 ¿Qué gestiones permitirá? (inscripción de socios, actividades, reservas, pagos, etc.)
 
