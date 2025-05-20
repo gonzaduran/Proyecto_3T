@@ -51,7 +51,7 @@ public class Socios extends JFrame {
 		btnALTAS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Altas V1= new Altas();
+				SociosAlta V1= new SociosAlta();
 				V1.setVisible(true);
 				
 			}
@@ -63,7 +63,7 @@ public class Socios extends JFrame {
 		btnBUSCAR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Buscar V2= new Buscar();
+				SociosBuscar V2= new SociosBuscar();
 				V2.setVisible(true);
 			}
 		});
@@ -74,7 +74,7 @@ public class Socios extends JFrame {
 		btnEDITAR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Editar V3= new Editar();
+				SociosEditar V3= new SociosEditar();
 				V3.setVisible(true);
 			}
 		});
@@ -85,7 +85,7 @@ public class Socios extends JFrame {
 		btnBAJAS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Bajas V4= new Bajas();
+				SociosBajas V4= new SociosBajas();
 				V4.setVisible(true);
 			}
 		});
