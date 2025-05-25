@@ -1,156 +1,155 @@
-🧱 MÓDULOS PRINCIPALES DE LA APLICACIÓN
-1. 🧑‍🤝‍🧑 GESTIÓN DE SOCIOS
-Funcionalidades:
-Alta, baja y modificación de socios.
+# 🏋️‍♂️ Club Deportivo - Sistema de Gestión
+
+Bienvenido al sistema de gestión para el **Club Deportivo**.  
+Esta aplicación permite gestionar de manera sencilla y eficiente las actividades, socios, entrenadores, pagos e instalaciones del club.  
+
+---
+
+## 🧭 Funcionalidades principales
+
+### 🔑 0. Inicio de Sesión
+- Permite iniciar sesión como usuario autorizado.
+- Redirige automáticamente a la pantalla principal tras un inicio exitoso.
+
+---
+
+### 👥 1. Socios
+- ➕ Añadir nuevo socio.
+- 🔎 Buscar o ver el listado de socios.
+- ✏️ Editar información de un socio.
+- 🗑️ Dar de baja (desactivar) un socio.
+
+---
+
+### 🏃‍♂️ 2. Actividades
+- ➕ Crear una nueva actividad.
+- 📅 Ver el calendario de actividades.
+- ✏️ Modificar una actividad existente.
+- 🗑️ Eliminar una actividad.
+
+---
+
+### 🧑‍🏫 3. Entrenadores
+- ➕ Registrar un nuevo entrenador.
+- 📋 Ver listado de entrenadores.
+- 📆 Consultar horarios asignados a cada entrenador.
+- ✏️ Editar información de un entrenador.
+
+---
+
+### 🏟️ 5. Instalaciones
+- 🛠️ Marcar una instalación como **en mantenimiento**.
+- 🔍 Ver la disponibilidad de una instalación.
+- 📅 Consultar el calendario de uso de las instalaciones.
+
+---
+
+## 🗂️ Estructura de la Base de Datos
+
+### 📄 Socio
+| Campo        | Tipo         | Descripción                  |
+|--------------|--------------|-----------------------------|
+| ID_Socio (PK) | INT          | Identificador único         |
+| Nombre       | VARCHAR      | Nombre del socio            |
+| Apellidos    | VARCHAR      | Apellidos del socio         |
+| DNI          | VARCHAR      | Documento de identidad      |
+| Dirección    | VARCHAR      | Dirección del socio         |
+| Teléfono     | VARCHAR      | Número de contacto          |
+| Email        | VARCHAR      | Correo electrónico          |
+| FechaAlta    | DATE         | Fecha de alta en el club    |
+| Estado       | ENUM         | Activo / Inactivo           |
+
+---
+
+### 📄 Actividad
+| Campo            | Tipo         | Descripción                          |
+|------------------|--------------|-------------------------------------|
+| ID_Actividad (PK) | INT          | Identificador único                 |
+| Nombre           | VARCHAR      | Nombre de la actividad              |
+| Descripción      | TEXT         | Breve descripción                   |
+| FechaInicio      | DATE         | Fecha de inicio                     |
+| FechaFin         | DATE         | Fecha de finalización               |
+| CupoMáximo       | INT          | Capacidad máxima                    |
+| ID_Entrenador (FK) | INT        | Entrenador responsable (relación)   |
+| ID_Instalación (FK) | INT      | Instalación asignada (relación)     |
+
+---
+
+### 📄 Entrenador
+| Campo           | Tipo         | Descripción                  |
+|-----------------|--------------|-----------------------------|
+| ID_Entrenador (PK) | INT        | Identificador único         |
+| Nombre          | VARCHAR      | Nombre del entrenador       |
+| Apellidos       | VARCHAR      | Apellidos del entrenador    |
+| Especialidad    | VARCHAR      | Área de especialidad        |
+| Teléfono        | VARCHAR      | Número de contacto          |
+| Email           | VARCHAR      | Correo electrónico          |
+
+---
+
+### 📄 Pago
+| Campo         | Tipo         | Descripción                  |
+|---------------|--------------|-----------------------------|
+| ID_Pago (PK)  | INT          | Identificador único         |
+| ID_Socio (FK) | INT          | Socio relacionado           |
+| Fecha         | DATE         | Fecha del pago              |
+| Monto         | DECIMAL      | Monto del pago              |
+| Estado        | ENUM         | Pagado / Pendiente          |
+| Concepto      | VARCHAR      | Descripción del pago        |
+
+---
+
+### 📄 Cuota
+| Campo         | Tipo         | Descripción                  |
+|---------------|--------------|-----------------------------|
+| ID_Cuota (PK) | INT          | Identificador único         |
+| Mes           | INT          | Mes correspondiente         |
+| Año           | INT          | Año correspondiente         |
+| Monto         | DECIMAL      | Monto de la cuota           |
 
-Datos personales: nombre, apellidos, DNI, fecha de nacimiento, dirección, email, teléfono.
+---
 
-Estado de la membresía: activa, suspendida, morosa, etc.
+### 📄 Inscripción
+| Campo            | Tipo         | Descripción                  |
+|------------------|--------------|-----------------------------|
+| ID_Socio (FK)    | INT          | Socio inscrito              |
+| ID_Actividad (FK)| INT          | Actividad inscrita          |
+| FechaInscripción | DATE         | Fecha de inscripción        |
 
-Fecha de alta como socio.
+---
 
-Tipo de membresía: básica, premium, familiar, infantil, senior.
+### 📄 Instalación
+| Campo              | Tipo         | Descripción                        |
+|--------------------|--------------|-----------------------------------|
+| ID_Instalación (PK) | INT         | Identificador único               |
+| Nombre             | VARCHAR      | Nombre de la instalación          |
+| Ubicación          | VARCHAR      | Ubicación de la instalación       |
+| Estado             | ENUM         | Disponible / Mantenimiento        |
 
-Historial de pagos y renovaciones.
+---
 
-Foto de perfil.
+## ✅ Pruebas Unitarias (JUnit)
 
-Consideraciones técnicas:
-Validación de datos.
+📌 Se han creado pruebas unitarias **básicas** para la clase `VerInstalacion` que permiten validar:
 
-Buscar socios por nombre, ID, estado, etc.
+- La correcta creación del modelo de tabla (`DefaultTableModel`) y sus columnas.
+- La inicialización de la tabla (`JTable`).
+- La ejecución del constructor sin errores.
+- La ejecución de la carga de datos (`cargarDatos()`) sin excepciones.
+- La consistencia de los nombres de las columnas esperadas.
 
-Asociar socios a actividades y pagos.
+📌 Estas pruebas **NO** requieren modificar el código original, y se centran en verificar el correcto funcionamiento de la interfaz y estructura básica.
 
-2. 🏋️‍♂️ GESTIÓN DE ACTIVIDADES DEPORTIVAS
-Funcionalidades:
-Crear, modificar y eliminar actividades (ej: fútbol, natación, pilates, tenis).
+---
 
-Categorías: individuales, grupales, por edades, por niveles.
+## 🚀 Mejoras futuras
 
-Horarios disponibles (días, horas).
+✅ Integración de pruebas más avanzadas usando **Mockito** para simular la base de datos.  
+✅ Implementación de un sistema de autenticación de usuarios más robusto.  
+✅ Exportación de datos a PDF/Excel.  
+✅ Mejora de la interfaz de usuario con un diseño más moderno y responsivo.
 
-Capacidad máxima por grupo o clase.
+---
 
-Entrenadores asignados.
+¡Gracias por usar este sistema! 🎉
 
-Material necesario para la actividad.
-
-Consideraciones:
-Asociación de socios inscritos a cada actividad.
-
-Generar informes de ocupación.
-
-Control de asistencia (ver módulo 5).
-
-3. 👨‍🏫 GESTIÓN DE ENTRENADORES Y PERSONAL
-Funcionalidades:
-Datos personales y de contacto.
-
-Especialidades (fútbol, yoga, musculación...).
-
-Horarios asignados.
-
-Actividades que imparte.
-
-Fecha de contratación.
-
-Remuneración (si aplica).
-
-Evaluaciones y observaciones.
-
-Consideraciones:
-Un entrenador puede tener múltiples actividades.
-
-Control de disponibilidad horaria.
-
-4. 💳 GESTIÓN DE PAGOS Y CUOTAS
-Funcionalidades:
-Crear planes de cuotas por tipo de socio.
-
-Registrar pagos (manual o automatizado).
-
-Control de pagos pendientes / atrasados.
-
-Métodos de pago: efectivo, tarjeta, transferencia.
-
-Facturación y recibos.
-
-Alertas por impagos.
-
-Consideraciones:
-Generación de informes mensuales.
-
-Vincular pagos con actividades extra.
-
-5. 📆 CONTROL DE ASISTENCIA Y RESERVAS
-Funcionalidades:
-Registro de asistencia a actividades.
-
-Reservas de clases o canchas (padel, tenis, etc.).
-
-Visualización de disponibilidad por horario.
-
-Cancelación o modificación de reservas.
-
-Control de aforo en tiempo real.
-
-6. 🏟️ GESTIÓN DE INSTALACIONES
-Funcionalidades:
-Gestión de espacios: gimnasio, piscina, salas, canchas.
-
-Disponibilidad horaria.
-
-Mantenimiento (fechas de cierre, reparación, limpieza).
-
-Reservas para socios y entrenadores.
-
-7. 📊 INFORMES Y ESTADÍSTICAS
-Tipos de informes:
-Socios activos vs inactivos.
-
-Actividades más populares.
-
-Ingresos mensuales / anuales.
-
-Ocupación de instalaciones.
-
-Asistencia por clase.
-
-Morosidad y pagos.
-
-8. ⚙️ PANEL DE ADMINISTRACIÓN
-Funcionalidades:
-Gestión de usuarios del sistema (roles: admin, recepcionista, entrenador).
-
-Control de accesos y permisos.
-
-Registro de actividad (log del sistema).
-
-Copias de seguridad de la base de datos.
-
-🗃️ BASE DE DATOS – ESTRUCTURA (Esquema simplificado)
-Aquí tienes algunas tablas esenciales:
-
-plaintext
-Copiar
-Editar
-SOCIOS (id, nombre, apellidos, fecha_nacimiento, email, telefono, direccion, tipo_membresia, estado, fecha_alta)
-
-ACTIVIDADES (id, nombre, descripcion, categoria, capacidad_maxima, dias, horario, id_entrenador)
-
-ENTRENADORES (id, nombre, especialidad, email, fecha_contratacion)
-
-INSCRIPCIONES (id, id_socio, id_actividad, fecha_inscripcion)
-
-PAGOS (id, id_socio, monto, fecha_pago, metodo_pago, concepto, estado)
-
-INSTALACIONES (id, nombre, tipo, estado, capacidad, ubicacion)
-
-RESERVAS (id, id_socio, id_instalacion, fecha, hora_inicio, hora_fin)
-
-ASISTENCIAS (id, id_socio, id_actividad, fecha, estado)
-
-USUARIOS (id, username, password_hash, rol)
-
-LOGS (id, usuario_id, accion, fecha_hora)
