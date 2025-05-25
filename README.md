@@ -52,10 +52,6 @@ Esta aplicación permite gestionar de manera sencilla y eficiente las actividade
 | ID_Socio (PK) | INT          | Identificador único         |
 | Nombre       | VARCHAR      | Nombre del socio            |
 | Apellidos    | VARCHAR      | Apellidos del socio         |
-| DNI          | VARCHAR      | Documento de identidad      |
-| Dirección    | VARCHAR      | Dirección del socio         |
-| Teléfono     | VARCHAR      | Número de contacto          |
-| Email        | VARCHAR      | Correo electrónico          |
 | FechaAlta    | DATE         | Fecha de alta en el club    |
 | Estado       | ENUM         | Activo / Inactivo           |
 
@@ -66,10 +62,8 @@ Esta aplicación permite gestionar de manera sencilla y eficiente las actividade
 |------------------|--------------|-------------------------------------|
 | ID_Actividad (PK) | INT          | Identificador único                 |
 | Nombre           | VARCHAR      | Nombre de la actividad              |
-| Descripción      | TEXT         | Breve descripción                   |
 | FechaInicio      | DATE         | Fecha de inicio                     |
 | FechaFin         | DATE         | Fecha de finalización               |
-| CupoMáximo       | INT          | Capacidad máxima                    |
 | ID_Entrenador (FK) | INT        | Entrenador responsable (relación)   |
 | ID_Instalación (FK) | INT      | Instalación asignada (relación)     |
 
@@ -82,8 +76,6 @@ Esta aplicación permite gestionar de manera sencilla y eficiente las actividade
 | Nombre          | VARCHAR      | Nombre del entrenador       |
 | Apellidos       | VARCHAR      | Apellidos del entrenador    |
 | Especialidad    | VARCHAR      | Área de especialidad        |
-| Teléfono        | VARCHAR      | Número de contacto          |
-| Email           | VARCHAR      | Correo electrónico          |
 
 ---
 
