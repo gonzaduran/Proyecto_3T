@@ -142,14 +142,3 @@ Esta aplicación permite gestionar de manera sencilla y eficiente las actividade
 
 ---
 
-## 🚀 Mejoras futuras
-
-✅ Integración de pruebas más avanzadas usando **Mockito** para simular la base de datos.  
-✅ Implementación de un sistema de autenticación de usuarios más robusto.  
-✅ Exportación de datos a PDF/Excel.  
-✅ Mejora de la interfaz de usuario con un diseño más moderno y responsivo.
-
----
-
-¡Gracias por usar este sistema! 🎉
-
